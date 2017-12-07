@@ -1,0 +1,14 @@
+#boderTop {
+    -fx-border-color: darkmagenta;
+    -fx-border-radius: 10px;
+}
+
+#boderMiddle {
+    -fx-border-color: darkorange;
+    -fx-border-radius: 10px;
+}
+
+#boderBottom {
+    -fx-border-color: lime;
+    -fx-border-radius: 10px;
+}

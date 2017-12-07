@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane alignment="CENTER" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+        <RowConstraints vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <HBox id="boderTop" fx:id="boxTop" alignment="CENTER" spacing="20.0">
+            <children>
+                <RadioButton fx:id="radioRecord" mnemonicParsing="false" onAction="#radioRecordAction" selected="true"
+                             text="Record">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="radioPlay"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="radioFile" mnemonicParsing="false" onAction="#radioFileAction" text="File"
+                             toggleGroup="$radioPlay"/>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <HBox spacing="5.0">
+                            <children>
+                                <Label text="Input:"/>
+                                <TextField fx:id="pathFileIn" disable="true" nodeOrientation="LEFT_TO_RIGHT"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </HBox>
+                        <HBox spacing="5.0" GridPane.rowIndex="1">
+                            <children>
+                                <Label text="Output:"/>
+                                <TextField fx:id="pathFileOut"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </HBox>
+                    </children>
+                </GridPane>
+            </children>
+            <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </GridPane.margin>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+        <GridPane id="boderMiddle" fx:id="processing" alignment="CENTER" disable="true" GridPane.rowIndex="1">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Filter Type:"/>
+                        <RadioButton fx:id="radioLowpass" mnemonicParsing="false" onAction="#LHAction" selected="true"
+                                     text="Lowpass">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="filterType"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioHighpass" mnemonicParsing="false" onAction="#LHAction" text="Highpass"
+                                     toggleGroup="$filterType"/>
+                        <RadioButton fx:id="radioBandpass" mnemonicParsing="false" onAction="#PSAction" text="Bandpass"
+                                     toggleGroup="$filterType"/>
+                        <RadioButton fx:id="radioBandstop" mnemonicParsing="false" onAction="#PSAction" text="Bandstop"
+                                     toggleGroup="$filterType"/>
+                    </children>
+                    <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </GridPane.margin>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                </VBox>
+                <GridPane GridPane.columnIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES"/>
+                        <ColumnConstraints hgrow="SOMETIMES"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints vgrow="SOMETIMES"/>
+                    </rowConstraints>
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label text="Frequency 1:"/>
+                                <TextField fx:id="txF1" text="1000"/>
+                                <Label text="Frequency 2:"/>
+                                <TextField fx:id="txF2" disable="true" text="1000"/>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </GridPane.margin>
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </VBox>
+                        <VBox spacing="5.0" GridPane.columnIndex="1">
+                            <padding>
+                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                            </padding>
+                        </VBox>
+                    </children>
+                </GridPane>
+            </children>
+            <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </GridPane.margin>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </GridPane>
+        <HBox id="boderBottom" alignment="CENTER" spacing="5.0" GridPane.rowIndex="2">
+            <children>
+                <Button fx:id="btnRecord" mnemonicParsing="false" onAction="#recordAction" text="Record"/>
+                <Button fx:id="btnPlay" disable="true" mnemonicParsing="false" onAction="#playAction" text="Play"/>
+                <Button fx:id="btnStop" disable="true" mnemonicParsing="false" onAction="#stopAction" text="Stop"/>
+            </children>
+            <GridPane.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </GridPane.margin>
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+        </HBox>
+    </children>
+</GridPane>
